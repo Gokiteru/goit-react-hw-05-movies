@@ -1,0 +1,17 @@
+.li {
+    text-align: justify;
+    list-style: none;
+}
+
+.li:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.wrapper {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.section {
+    padding: 15px 10px;
+}

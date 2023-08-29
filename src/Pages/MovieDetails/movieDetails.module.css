@@ -1,0 +1,73 @@
+.wrapper {
+    padding-top: 15px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+}
+
+.backButton {
+    border-radius: 6px;
+    padding: 7px 10px;
+    border: transparent;
+    outline: none;
+    margin-left: 10px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    background-color: #ab47bc;
+    color: white;
+    text-decoration: none;
+}
+
+.backButton:hover {
+    background-color: #773183;
+}
+
+.movieCard {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 0 10px 10px;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+.imageWrapper {
+    width: 270px;
+}
+
+.movieInfo {
+    width: 500px;
+    text-align: justify;
+}
+
+.li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.extraInfo {
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+}
+
+.extraInfoTitle {
+    margin-bottom: 10px;
+}
+
+.extraListItem:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link:hover {
+    color: #ab47bc;
+}
