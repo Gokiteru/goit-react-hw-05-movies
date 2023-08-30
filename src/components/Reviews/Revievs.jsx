@@ -6,14 +6,14 @@ import { getReviews } from 'components/api';
 
 const Revievs = () => {
   const [revievs, setRevievs] = useState([]);
-  const { movieId } = useParams();
+  const { movieID } = useParams();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const data = await getReviews(movieId);
+        const data = await getReviews(movieID);
         setRevievs(data);
       } catch (e) {
         console.log(e);
@@ -22,27 +22,24 @@ const Revievs = () => {
       }
     };
     fetchData();
-  }, [movieId]);
+  }, [movieID]);
 
   return (
     <section className={css.section}>
-        {isLoading ? (
+      {isLoading ? (
         <div>Loading...</div>
-        ) : (
-            <>
-            {revievs.length > 0 && 
-            revievs.map(({id, author, content}) => (
-                <div className={css.wrapper}>
-                    <li className={css.li} key={id}>
-                        <p>
-                            <b>Author: {author}</b>
-                        </p>
-                    </li>
-                </div>
+      ) : (
+        <>
+          {revievs.length > 0 &&
+            revievs.map(({ id, author, content }) => (
+                <li className={css.li} key={id}>
+                  <b>Author: {author}</b>
+                  <p>{content}</p>
+                </li>
             ))}
-            </>
-        )}
-        {!revievs.length && <p>There no revievs for this film.</p>}
+        </>
+      )}
+      {!revievs.length && <p>There no revievs for this film.</p>}
     </section>
   );
 };
