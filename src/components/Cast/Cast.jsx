@@ -68,6 +68,8 @@ const Cast = () => {
         )}
       </section>
     );
+  } else {
+    return( <p>Something went wrong</p>)
   }
 };
 
