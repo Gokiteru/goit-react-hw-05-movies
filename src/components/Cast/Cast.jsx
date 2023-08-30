@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'components/api';
 
-const imageURL = "";
-const blankImage = "";
+const imageURL = 'https://image.tmdb.org/t/p/w500';
+const blankImage = '';
 
 const Cast = () => {
-  const movieId = useParams();
+  const { movieID } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [cast, setCast] = useState(null);
 
@@ -17,7 +17,7 @@ const Cast = () => {
       setIsLoading(true);
 
       try {
-        const cast = await getCredits(movieId);
+        const cast = await getCredits(movieID);
         setCast(cast);
       } catch (error) {
         console.log(error);
@@ -26,47 +26,49 @@ const Cast = () => {
       }
     };
     fetchData();
-  }, [movieId]);
+  }, [movieID]);
 
-  return (
-    <section className={css.section}>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <ul className={css.ul}>
-          {cast.map(({ id, profile_path, name, character }) => {
-            const imageSRC = profile_path
-              ? imageURL + profile_path
-              : blankImage;
-            return (
-              <li key={id} className={css.li}>
-                <img scr={imageSRC} alt={name} width={200} height={300} />
-                <div>
-                  <p>
-                    <span>{name}</span>
-                  </p>
-                  {character ? (
+  if (cast) {
+    return (
+      <section className={css.section}>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <ul className={css.ul}>
+            {cast.map(({ id, profile_path, name, character }) => {
+              const imageSRC = profile_path
+                ? imageURL + profile_path
+                : blankImage;
+              return (
+                <li key={id} className={css.li}>
+                  <img scr={imageSRC} alt={name} width={200} height={300} />
+                  <div>
                     <p>
-                      <b>Character</b>
-                      <span>{character}</span>
+                      <span>{name}</span>
                     </p>
-                  ) : (
-                    <p>
-                      <b>Character</b>
-                      <span>Unknown</span>
-                    </p>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-      {!cast.length && (
-        <p>There is no information about the cast of thiss film</p>
-      )}
-    </section>
-  );
+                    {character ? (
+                      <p>
+                        <b>Character</b>
+                        <span>{character}</span>
+                      </p>
+                    ) : (
+                      <p>
+                        <b>Character</b>
+                        <span>Unknown</span>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        {!cast.length && (
+          <p>There is no information about the cast of thiss film</p>
+        )}
+      </section>
+    );
+  }
 };
 
 export default Cast;
