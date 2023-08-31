@@ -59,6 +59,7 @@ const Movies = () => {
           defaultValue={movieName}
         />
         <Button
+          className={css.btn}
           type="submit"
           variant="outlined"
           color="secondary"

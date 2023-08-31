@@ -21,7 +21,7 @@
 }
 
 .backButton:hover {
-    background-color: #773183;
+    background-color: rgba(116, 1, 136, 0.767);
 }
 
 .movieCard {
@@ -34,9 +34,9 @@
 .title {
     margin-bottom: 10px;
 }
-
+/* 
 .imageWrapper {
-}
+} */
 
 .movieInfo {
     width: 500px;

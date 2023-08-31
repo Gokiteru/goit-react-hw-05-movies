@@ -5,18 +5,37 @@
 
 .list {
     margin: 15px 0;
+    list-style: none;
+    overflow: scroll;
+    overflow-x: hidden;
+    max-height: 800px;
+    padding-left: 0px;
 }
+
+/* .li {
+} */
 
 .li:not(:last-child) {
     margin-bottom: 5px;
 }
 
 .link {
+    padding: 0 15px;
+    text-align: center;
+    width: 100%;
     color: black;
     text-decoration: none;
     font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    ;
+    background-color: rgba(155, 39, 176, 0.158);
 }
 
 .link:hover {
-    color: #ab47bc;
+    color: #9c27b0;
 }

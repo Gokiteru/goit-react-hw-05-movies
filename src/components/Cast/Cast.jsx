@@ -3,9 +3,9 @@ import css from './cast.module.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'components/api';
+import blankImage from '../../images/noimage.jpg'
 
 const imageURL = 'https://image.tmdb.org/t/p/w500';
-const blankImage = '';
 
 const Cast = () => {
   const { movieID } = useParams();
@@ -41,7 +41,7 @@ const Cast = () => {
                 : blankImage;
               return (
                 <li key={id} className={css.li}>
-                  <img scr={imageSRC} alt={name} width={200} height={300} />
+                  <img src={imageSRC} alt={name} width={200} height={300} />
                   <div>
                     <p>
                       <span>{name}</span>

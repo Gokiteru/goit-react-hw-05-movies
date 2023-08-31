@@ -24,14 +24,16 @@
 }
 
 .navlink.active {
-    color: white;
-    background-color: #ab47bc;
+    color: #FFFFFF;
+    background-color: #9c27b0;
 }
 
 .navlink.active:hover {
-    background-color: #773183;
+    background-color: #9c27b0;
 }
 
 .navlink:hover:not(.active) {
-    color: #ab47bc;
+    background-color: #FFFFFF;
+    color: #9c27b0;
+    outline: solid rgba(156, 39, 176, 0.5);
 }
