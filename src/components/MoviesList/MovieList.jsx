@@ -14,7 +14,7 @@ const MovieList = ({ trending, loading }) => {
         <ul className={css.ul}>
           {trending.map(({ id, title, name }) => (
             <li className={css.li} key={id}>
-              <Link className={css.link} to={`movies/${id}`} state={{ from: location.pathname }}>
+              <Link className={css.link} to={`movies/${id}`} state={{ from: location }}>
                 {title || name}
               </Link>
             </li>

@@ -17,6 +17,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
+  const cameBack = location.state?.from ?? '/';
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const MovieDetails = () => {
   }, [movieID]);
 
   const handleGoBackBtn = () => {
-    navigate(location.state.from);
+    navigate(cameBack);
   };
 
 
@@ -49,11 +50,9 @@ const MovieDetails = () => {
     return (
       <>
         <section className={css.wrapper}>
-          {location.state?.from && (
             <button className={css.backButton} onClick={handleGoBackBtn}>
               <span>Go back</span>
             </button>
-          )}
           {isLoading ? (
             <div>Loading...</div>
           ) : (
@@ -90,13 +89,13 @@ const MovieDetails = () => {
           <div>
             <ul>
               <li className={css.extraListItem}>
-                <Link to="cast" state={location.state} className={css.link}>
+                <Link to="cast" state={cameBack} className={css.link}>
                   Cast
                 </Link>
               </li>
   
               <li className={css.extraListItem}>
-                <Link to="reviews" state={location.state} className={css.link}>
+                <Link to="reviews" state={cameBack} className={css.link}>
                   Reviews
                 </Link>
               </li>
