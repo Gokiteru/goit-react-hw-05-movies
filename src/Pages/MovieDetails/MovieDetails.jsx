@@ -3,7 +3,6 @@ import {
   Outlet,
   useParams,
   useLocation,
-  useNavigate,
   Link,
 } from 'react-router-dom';
 import { getMovieById } from 'components/api';
@@ -17,8 +16,7 @@ const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
-  const cameBack = location.state?.from ?? '/';
-  const navigate = useNavigate();
+  const cameBack = location.state?.form ?? '/';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,11 +33,6 @@ const MovieDetails = () => {
     fetchData();
   }, [movieID]);
 
-  const handleGoBackBtn = () => {
-    navigate(cameBack);
-  };
-
-
   if (movie) {
     const { genres, title, release_date, overview, vote_average, poster_path } = movie;
     const imageSRC = poster_path ? imageURL + poster_path : blankImage;
@@ -50,9 +43,7 @@ const MovieDetails = () => {
     return (
       <>
         <section className={css.wrapper}>
-            <button className={css.backButton} onClick={handleGoBackBtn}>
-              <span>Go back</span>
-            </button>
+          <Link className={css.backButton} to={cameBack}>Go back</Link>
           {isLoading ? (
             <div>Loading...</div>
           ) : (
